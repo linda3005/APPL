@@ -1,18 +1,18 @@
 public class Cylinder extends Shape {
 
-    private double width;
-    private double length;
-    public Rectangle(double w, double l){
-        super("Rectangle");
-        width = w;
-        length = l;
+    private double radius;
+    private double height;
+    public Cylinder(double r, double h){
+        super("Cylinder");
+        radius = r;
+        height = h;
     }
     @Override
     public double area() {
-        return width*length;
+        return Math.PI*radius*radius*height; 
     }
     @Override 
     public String toString(){
-        return super.toString() + " of length " + length +" and width "+ width;
+        return super.toString() + " of radius " + radius +" and height "+ height;
     }
 }
