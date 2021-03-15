@@ -17,6 +17,7 @@ public class Sphere extends Shape
  //-----------------------------------------
  // Returns the surface area of the sphere.
  //-----------------------------------------
+ @Override //overriding
  public double area()
  {
  return 4*Math.PI*radius*radius; 
@@ -24,6 +25,7 @@ public class Sphere extends Shape
  //-----------------------------------
  // Returns the sphere as a String.
  //-----------------------------------
+ @Override //overriding
  public String toString()
  {
  return super.toString() + " of radius " + radius;
