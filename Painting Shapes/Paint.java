@@ -12,7 +12,7 @@ public class Paint
  //-----------------------------------------
  public Paint(double c)
  {
- coverage = c;
+ this.coverage = c;
  }
  //---------------------------------------------------
  // Returns the amount of paint (number of gallons)
@@ -21,6 +21,6 @@ public class Paint
  public double amount(Shape s)
  {
  System.out.println ("Computing amount for " + s);
- return 0;
+ return s.area()/coverage;
  }
 } 
