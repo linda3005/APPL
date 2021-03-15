@@ -13,8 +13,7 @@ public class Staff
    //-----------------------------------------------------------------
    public Staff ()
    {
-      staffList = new StaffMember[6];
-
+      staffList = new StaffMember[8];
       staffList[0] = new Executive ("Sam", "123 Main Line",
          "555-0469", "123-45-6789", 2423.07);
 
@@ -31,9 +30,19 @@ public class Staff
       staffList[5] = new Volunteer ("Cliff", "321 Duds Lane",
          "555-7282");
 
-      ((Executive)staffList[0]).awardBonus (500.00);
-
-      ((Hourly)staffList[3]).addHours (40);
+      staffList[6] = new Commission ("Oliver", "28A Star City.",
+        "555-2010", "178-52-4043", 6.25, 0.2);//my own 1
+      staffList[7] = new Commission ("Felicity", "Vancouver City.",
+        "555-7328", "365-76-4001", 9.75, 0.15);//my own 2
+        
+        ((Executive)staffList[0]).awardBonus (500.00);
+        ((Hourly)staffList[3]).addHours (40);
+        
+        ((Commission)staffList[6]).addHours(35);
+        ((Commission)staffList[6]).addSales(400.00);//for my own 1
+        
+        ((Commission)staffList[7]).addHours(40);
+        ((Commission)staffList[7]).addSales(950.00);//for my own 2
    }
 
    //-----------------------------------------------------------------
