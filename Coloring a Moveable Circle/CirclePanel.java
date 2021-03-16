@@ -29,11 +29,28 @@ public class CirclePanel extends JPanel {
         JButton right = new JButton("Right");
         JButton up = new JButton("Up");
         JButton down = new JButton("Down");
+        //color
+        JButton red = new JButton("RED");
+        JButton yellow = new JButton("YELLOW");
+        JButton green = new JButton("GREEN");
+        JButton blue = new JButton("BLUE");
         // Add listeners to the buttons
         left.addActionListener(new MoveListener(-20, 0));
         right.addActionListener(new MoveListener(20, 0));
         up.addActionListener(new MoveListener(0, -20));
         down.addActionListener(new MoveListener(0, 20));
+        //color listener
+        red.addActionListener(new ColorListener(Color.red));
+        yellow.addActionListener(new ColorListener(Color.yellow));
+        green.addActionListener(new ColorListener(Color.green));
+        blue.addActionListener(new ColorListener(Color.blue));
+        choose.addActionListener(new ColorListener(Color.null));
+
+        //bg buttons
+        red.setBackground(Color.red);
+        yellow.setBackground(Color.yellow);
+        green.setBackground(Color.green);
+        blue.setBackground(Color.blue);
         // Need a panel to put the buttons on or they'll be on
         // top of each other.
         JPanel buttonPanel = new JPanel();
@@ -41,8 +58,14 @@ public class CirclePanel extends JPanel {
         buttonPanel.add(right);
         buttonPanel.add(up);
         buttonPanel.add(down);
+        colorButtonPanel.add(red);
+        colorButtonPanel.add(yellow);
+        colorButtonPanel.add(green);
+        colorButtonPanel.add(blue);
+        colorButtonPanel.add(choose);
         // Add the button panel to the bottom of the main panel
         this.add(buttonPanel, "South");
+        this.add(colorButtonPanel, "North");
     }
 
     // ---------------------------------------------------------------
@@ -75,6 +98,22 @@ public class CirclePanel extends JPanel {
         public void actionPerformed(ActionEvent e) {
             x += dx;
             y += dy;
+            repaint();
+        }
+    }
+
+    private class ColorListener implements ActionListener{
+        private Color color;
+        public ColorListener(Color color){
+            this.color=color;
+        }
+        public void actionPerformed(ActionEvent e){
+            if(this.color==null){
+                co=JColorChooser.showDialog(choose,"Please Choose the Color ", co);
+
+            }else{
+                co=this.color;
+            }
             repaint();
         }
     }
