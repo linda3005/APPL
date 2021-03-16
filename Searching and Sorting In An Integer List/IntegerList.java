@@ -47,68 +47,73 @@ public class IntegerList
  //-------------------------------------------------------
  //sort the list into ascending order using the selection sort algorithm
  //-------------------------------------------------------
- public void selectionSort()
- {
- int minIndex;
- for (int i=0; i < list.length-1; i++)
- {
- //find smallest element in list starting at location i
- minIndex = i;
- for (int j = i+1; j < list.length; j++)
- if (list[j] < list[minIndex])
- minIndex = j;
- //swap list[i] with smallest element
- int temp = list[i]; 
- list[i] = list[minIndex];
- list[minIndex] = temp;
- }
- }
-
-public void firstReplace(int oldValue, int newValue){
-    for (int i=0;i<list.length-1;i++){
-        if (list[i] == oldValue){
-            list[i]=newValue;
-            i=list.length;
+ public void selectionSort() {
+    int minIndex;
+    for (int i = 0; i < list.length - 1; i++) {
+        //find smallest element in list starting at location i
+        minIndex = i;
+        for (int j = i + 1; j < list.length; j++) {
+            if (list[j] < list[minIndex]) {
+                minIndex = j;
+            }
         }
-    }
-}
-public void allReplace(int oldValue, int newValue){
-    for (int i=0;i<list.length;i++){
-            firstReplace(oldValue, newValue);
-    }
-}
-public int binarySearch(int getbin){
-    int mid;
-    int und = 0;
-    int up = (list.length-1);
-
-    while (und <= up){
-        mid=((und+up)/2);
-        if(list[mid]==getbin){
-            return mid;
-        }
-        else 
-        if(list[mid]>getbin){
-            und=mid+1;
-        }else{
-            up=mid-1;
-        }
-    }
-    return -1;
-}
-
-public void sortDec(){
-    int indexmax;
-    for(int i=0;i<list.length-1;i++){
-        indexmax = i;
-        for (int j=i+1;j<list.length;j++){
-            if (list[j]>list[indexmax])
-            indexmax=j;
-        }
-        int temp=list[i];
-        list[i]=list[indexmax];
-        list[indexmax]=temp;
+        //swap list[i] with smallest element
+        int temp = list[i];
+        list[i] = list[minIndex];
+        list[minIndex] = temp;
     }
 }
 
-} 
+void replaceFirst(int oldVal, int newVal) {
+    int loc = search(oldVal);
+    if(loc != -1) {
+        list[loc] = newVal;
+    }
+}
+
+void replaceAll(int oldVal, int newVal) {
+    int location = -1;
+    for (int i = 0; i < list.length; i++) {
+        if (list[i] == oldVal) {
+            location = i;
+            list[location] = newVal;
+        }
+    }
+}
+
+void sortDecreasing() {
+    int maxIndex;
+    for (int i = 0; i < list.length - 1; i++) {
+        maxIndex = i;
+        for (int j = i + 1; j < list.length; j++) {
+            if (list[j] > list[maxIndex]) {
+                maxIndex = j;
+            }
+        }
+        int temp = list[i];
+        list[i] = list[maxIndex];
+        list[maxIndex] = temp;
+    }
+}
+
+int binarySearchD(int target)
+{
+    int min=0;
+    int max=list.length-1; 
+    int middle=0; 
+    int loc=-1;
+    while (loc == -1 && min <= max)
+    {
+        middle = (min+max) / 2;
+        if (target == list[middle])
+            loc = middle;
+        else {
+            if (target > list[middle])
+                max = middle-1;
+            else
+                min = middle+1;
+        }
+    }
+    return loc;
+}
+}

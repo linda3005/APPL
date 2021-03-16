@@ -29,45 +29,63 @@ public class IntegerListTest
  //-------------------------------------------------------
  public static void dispatch(int choice)
  {
- int loc;
- switch(choice)
+    int loc, oldVal, newVal;
+ 
+    switch(choice)
  {
- case 0:
- System.out.println("Bye!");
- break;
- case 1:
- System.out.println("How big should the list be?");
- int size = scan.nextInt();
- list = new IntegerList(size);
- list.randomize();
- break;
- case 2:
- list.selectionSort();
- break;
- case 3:
- System.out.print("Enter the value to look for: ");
- loc = list.search(scan.nextInt()); 
- if (loc != -1)
- System.out.println("Found at location " + loc);
- else
- System.out.println("Not in list");
- break;
- case 4:
- list.print();
- break;
- case 5:
- int theOldVal=0;
- int theNewVal=0;
- System.out.println("enter the old of value ");
- theOldVal = scan.nextInt();
- System.out.println("enter the new of value ");
- theNewVal = scan.nextInt();
- break;
- case 6:
- default:
- System.out.println("Sorry, invalid choice");
- }
- }
+            case 0:
+                System.out.println("Bye!");
+                break;
+            case 1:
+                System.out.println("How big should the list be?");
+                int size = scan.nextInt();
+                list = new IntegerList(size);
+                list.randomize();
+                break;
+            case 2:
+                list.selectionSort();
+                break;
+            case 3:
+                System.out.print("Enter the value to look for: ");
+                loc = list.search(scan.nextInt()); 
+                if (loc != -1)
+                System.out.println("Found at location " + loc);
+                else
+                System.out.println("Not in list");
+                break;
+            case 4:
+                list.print();
+                break;
+            case 5:
+                System.out.println("Enter the value to look for: ");
+                oldVal = scan.nextInt();
+                System.out.println("Enter the new value: ");
+                newVal = scan.nextInt();
+                list.replaceFirst(oldVal, newVal);
+                break;
+            case 6:
+                System.out.println("Enter the value to look for: ");
+                oldVal = scan.nextInt();
+                System.out.println("Enter the new value: ");
+                newVal = scan.nextInt();
+                list.replaceAll(oldVal, newVal);
+                break;
+            case 7:
+                list.sortDecreasing();
+                break;
+            case 8:
+                System.out.println("Enter the value to look for: ");
+                loc = list.binarySearchD(scan.nextInt());
+                if (loc != -1) {
+                    System.out.println("Found at location " + loc);
+                } else {
+                    System.out.println("Not in list");
+                }
+                break;
+            default:
+                System.out.println("Sorry, invalid choice");
+        }
+    }
  //-------------------------------------------------------
  // Print the user's choices
  //-------------------------------------------------------
@@ -81,6 +99,9 @@ public class IntegerListTest
  System.out.println("3: Find an element in the list using linear search");
  System.out.println("4: Print the list");
  System.out.println("5: Replace First");
+ System.out.println("6: Replace all value");
+ System.out.println("7: Sort the list in descending order");
+ System.out.println("8: Find an element in the list using binary search");
  System.out.print("\nEnter your choice: ");
  }
 } 
