@@ -21,6 +21,7 @@ public class Salesperson implements Comparable
  //-------------------------------------------
  // Returns the sales person as a string.
  //-------------------------------------------
+ @Override
  public String toString()
  {
  return lastName + ", " + firstName + ": \t" + totalSales;
@@ -29,6 +30,7 @@ public class Salesperson implements Comparable
  // Returns true if the sales people have
  // the same name.
  //-------------------------------------------
+ @Override
  public boolean equals (Object other)
  {
  return (lastName.equals(((Salesperson)other).getLastName()) &&
@@ -38,10 +40,15 @@ public class Salesperson implements Comparable
  // Order is based on total sales with the name
  // (last, then first) breaking a tie.
  //--------------------------------------------------
+ @Override
  public int compareTo(Object other)
  {
- int result;
- return result;
+     Salesperson sp=(Salesperson) other;
+     if(sp.firstName.compareTo(firstName)<0)
+        return -1;
+    if(sp.firstName.compareTo(firstName)>0)
+        return +1;
+    return 0;
  }
 
  //-------------------------

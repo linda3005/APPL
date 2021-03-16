@@ -18,9 +18,14 @@ public class WeeklySales
  salesStaff[7] = new Salesperson("Andy", "Adams", 5000);
  salesStaff[8] = new Salesperson("Jim", "Doe", 2850);
  salesStaff[9] = new Salesperson("Walt", "Smith", 3000);
- Sorting.insertionSort(salesStaff);
- System.out.println ("\nRanking of Sales for the Week\n");
- for (Salesperson s : salesStaff)
- System.out.println (s);
+Sorting.ASCinsertionSort(salesStaff);
+  System.out.println ("\nRanking of Sales for the Week in Ascending\n");
+for (Salesperson s : salesStaff)
+System.out.println (s.toString());
+System.out.println("***");
+Sorting.DESinsertionsort(salesStaff);
+System.out.println ("\nRanking of Sales for the Week in Descending\n");
+for (Salesperson s : salesStaff)
+ System.out.println (s.toString());
  }
 }
