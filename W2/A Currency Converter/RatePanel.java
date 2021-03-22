@@ -26,8 +26,8 @@ public class RatePanel extends JPanel
  title.setFont (new Font ("Helvetica", Font.BOLD, 20));  
  // Set up the arrays for the currency conversions   
  currencyName = new String[] {"Select the currency..",   "European Euro", "Canadian Dollar",   "Japanese Yen", "Australian Dollar",   "Indian Rupee", "Mexican Peso"};   
- rate = new double [] {0.0, 1.2103, 0.7351, 0.0091, 0.6969, 0.0222, 0.0880};  
-  
+ double[] rate = new double [] {0.0, 1.2103, 0.7351, 0.0091, 0.6969, 0.0222, 0.0880};  
+ double result = Double.parseDouble(jTextField2.getText()) * rate[jComboBox1.getSelectedIndex()];
  result = new JLabel (" ------------ ");  
  add (title);  
   
@@ -45,6 +45,7 @@ private class ComboListener implements ActionListener {
  // --------------------------------------------------   
  public void actionPerformed (final ActionEvent event)   {  
  final int index = 0;  
+ jTextField1.setText("Result: "+(String.format("%.2f", result)));
  result.setText ("1 " + currencyName[index] +   " = " + rate[index] + " U.S. Dollars");   }  
  }  
 } 
