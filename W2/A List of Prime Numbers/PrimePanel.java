@@ -10,13 +10,15 @@ public class PrimePanel extends JPanel  {
  private JButton computeButton;  
  private JTextArea primeList;  
  // ----------------------------------------------------------   // Sets up a panel with a heading, a labeled text field   // for the user to enter an integer, a button to trigger   // the calculation, and a text area to display the list   // of primes.  
- // ----------------------------------------------------------   public PrimePanel ()  
+ // ----------------------------------------------------------   
+ public PrimePanel ()  
  {  
      final JLabel heading = new JLabel("Prime Number Listing");
      heading.setFont(new Font("Helvetica", Font.BOLD, 30));
      final JLabel inputLabel = new JLabel("Enter a number: ");
  number = new JTextField (8);  
- computeButton = new JButton ("Click to see all primes up to your number!");   primeList = new JTextArea (10, 30);  
+ computeButton = new JButton ("Click to see all primes up to your number!");   
+ primeList = new JTextArea (10, 30);  
  computeButton.addActionListener(new ButtonListener());  
  // Add the components to the panel  
  add (heading);  
@@ -28,11 +30,13 @@ public class PrimePanel extends JPanel  {
  setBackground (Color.yellow);  
  }  
  // *****************************************************************   // Represents a listener for the click of the button.  
- // *****************************************************************   public class ButtonListener implements ActionListener  
+ // *****************************************************************   
+ public class ButtonListener implements ActionListener  
  {  
  // -----------------------------------------------------------   // Generates and displays a list of primes when the  
  // button is clicked.  
- // -----------------------------------------------------------   public void actionPerformed (ActionEvent event)  
+ // -----------------------------------------------------------   
+ public void actionPerformed (ActionEvent event)  
  {  
  String textNum = number.getText();  
  int num = Integer.parseInt (textNum);  
@@ -57,4 +61,7 @@ public class PrimePanel extends JPanel  {
  }  
  }  
  primeList.setText (ans);  
- } 
+ }
+ }
+ }
+
