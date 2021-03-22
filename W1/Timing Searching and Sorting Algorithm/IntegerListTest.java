@@ -24,6 +24,10 @@ public class IntegerListTest {
             choice = scan.nextInt();
         }
     }
+    public static void printTime( long time1Milli, long time2Milli, String strMsg )
+    {
+        System.out.println( strMsg + " took [" + ( time2Milli - time1Milli ) + "] milliseconds" );
+    }
 
     // ------------------------------------------------------
     // dispatch -- takes a choice and does what needs doing
@@ -71,13 +75,19 @@ public class IntegerListTest {
                     System.out.println("Not in list");
                 break;
             case 7:
-                list.sortIncreasing();
-                System.out.println("List has been sorted.");
+                time1 = System.currentTimeMillis();
+                list.sortIncreasing(); 
+                time2 = System.currentTimeMillis();
+                printTime( time1, time2, "sortIncreasing() [Selection Sort]: " );
+                System.out.println("List has been sorted."); 
                 break;
             case 8:
-                list.sortDecreasing();
-                System.out.println("List has been sorted.");
-                break;
+                time1 = System.currentTimeMillis();
+                list.sortDecreasing(); 
+                time2 = System.currentTimeMillis();
+                printTime( time1, time2, "sortDecreasing() [Insertion Sort]: " );
+                System.out.println("List has been sorted."); 
+                break; 
             default:
                 System.out.println("Sorry, invalid choice");
         }
@@ -104,3 +114,4 @@ public class IntegerListTest {
  " decreasing order");
  System.out.print("\nEnter your choice: ");
  }
+  }
