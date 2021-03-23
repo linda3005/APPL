@@ -13,6 +13,7 @@ private final int CIRCLE_SIZE = 50;
 private int x,y,width,height;
 private Color c;
 JButton left, right, up, down;
+
 //---------------------------------------------------------------
 // Set up circle and buttons to move it.
 //---------------------------------------------------------------
