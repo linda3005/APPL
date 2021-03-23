@@ -12,8 +12,8 @@ public class RatePanel extends JPanel
 private double[] rate; // exchange rates
  private String[] currencyName;  
  private JLabel result;  
- private JComboBox comb;
- private JTextField fieldText;
+ JComboBox comb = new JComboBox();
+ JTextField field= new JTextField(10);
  // ------------------------------------------------------------   
  // Sets up a panel to convert cost from one of 6 currencies   
  // into U.S. Dollars. The panel contains a heading, a text
@@ -31,14 +31,13 @@ private double[] rate; // exchange rates
                                 "Indian Rupee", "Mexican Peso"};   
  rate = new double [] {0.0, 1.2103, 0.7351, 0.0091, 0.6969, 0.0222, 0.0880};  
  result = new JLabel (" ------------ ");  
- add (title);  
+ //add (title);  
   //Add Combo
-  comb = new JComboBox(currencyName);
+  comb.setModel(new DefaultComboBoxModel(currencyName));
   comb.addActionListener(new ComboListener());
+  add(title);
   add(comb);
-  //add Field
-  fieldText=new JTextField(20);
-  add(fieldText);
+  add(field);
   add(result);
  }  
  // ******************************************************   
@@ -53,8 +52,8 @@ private class ComboListener implements ActionListener {
  public void actionPerformed (ActionEvent event)   {  
      //int index = 0;
      int index = comb.getSelectedIndex(); 
- double amount = Double.parseDouble(fieldText.getText());
- double converted = amount*rate[index];
- result.setText (amount+ " " + currencyName[index] +   " = " + converted + " U.S. Dollars");   }  
+ double amount = Double.parseDouble(field.getText());
+ //double converted = amount*rate[index];
+ result.setText (+amount+ " " + currencyName[index] + " U.S. Dollars = "+ (amount * rate[index]));   }  
  }  
 } 
