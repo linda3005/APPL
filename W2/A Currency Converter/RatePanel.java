@@ -1,4 +1,4 @@
-// ******************************************************************  
+/// ******************************************************************  
 // RatePanel.java  
 //  
 // Panel for a program that converts different currencies to  
@@ -9,10 +9,11 @@ import java.awt.event.*;
 import javax.swing.*;  
 public class RatePanel extends JPanel  
 { 
-    private static final long serialVersionUID = 1L;
-    private final double[] rate; // exchange rates
- private final String[] currencyName;  
- private final JLabel result;  
+private double[] rate; // exchange rates
+ private String[] currencyName;  
+ private JLabel result;  
+ private JComboBox comb;
+ private JTextField fieldText;
  // ------------------------------------------------------------   
  // Sets up a panel to convert cost from one of 6 currencies   
  // into U.S. Dollars. The panel contains a heading, a text
@@ -21,18 +22,24 @@ public class RatePanel extends JPanel
  // ------------------------------------------------------------   
  public RatePanel ()  
  {  
- final JLabel title = new JLabel ("How much is that in dollars?");   
+ JLabel title = new JLabel ("How much is that in dollars?");   
  title.setAlignmentX (Component.CENTER_ALIGNMENT);   
  title.setFont (new Font ("Helvetica", Font.BOLD, 20));  
  // Set up the arrays for the currency conversions   
- currencyName = new String[] {"Select the currency..",   "European Euro", "Canadian Dollar",   "Japanese Yen", "Australian Dollar",   "Indian Rupee", "Mexican Peso"};   
- double[] rate = new double [] {0.0, 1.2103, 0.7351, 0.0091, 0.6969, 0.0222, 0.0880};  
- double result = Double.parseDouble(jTextField2.getText()) * rate[jComboBox1.getSelectedIndex()];
+ currencyName = new String[] {"Select the currency..","European Euro",
+                                "Canadian Dollar","Japanese Yen", "Australian Dollar",
+                                "Indian Rupee", "Mexican Peso"};   
+ rate = new double [] {0.0, 1.2103, 0.7351, 0.0091, 0.6969, 0.0222, 0.0880};  
  result = new JLabel (" ------------ ");  
  add (title);  
-  
- add (result);  
-  
+  //Add Combo
+  comb = new JComboBox(currencyName);
+  comb.addActionListener(new ComboListener());
+  add(comb);
+  //add Field
+  fieldText=new JTextField(20);
+  add(fieldText);
+  add(result);
  }  
  // ******************************************************   
  // Represents an action listener for the combo box.   
@@ -43,9 +50,11 @@ private class ComboListener implements ActionListener {
  // the value in that currency then computes and   
  // displays the value in U.S. Dollars.  
  // --------------------------------------------------   
- public void actionPerformed (final ActionEvent event)   {  
- final int index = 0;  
- jTextField1.setText("Result: "+(String.format("%.2f", result)));
- result.setText ("1 " + currencyName[index] +   " = " + rate[index] + " U.S. Dollars");   }  
+ public void actionPerformed (ActionEvent event)   {  
+     //int index = 0;
+     int index = comb.getSelectedIndex(); 
+ double amount = Double.parseDouble(fieldText.getText());
+ double converted = amount*rate[index];
+ result.setText (amount+ " " + currencyName[index] +   " = " + converted + " U.S. Dollars");   }  
  }  
 } 
